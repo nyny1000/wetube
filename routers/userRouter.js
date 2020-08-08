@@ -1,5 +1,16 @@
 import express from "express";
+import routes from "../routes";
+import {
+  users,
+  userDetail,
+  editProfile,
+  changePassword
+} from "../controllers/userController";
 
 const userRouter = express.Router();
 
-export default userRouter; // export default = 파일로(전체를) export 한다는 것
+userRouter.get(routes.userDetail, userDetail);
+userRouter.get(routes.editProfile, editProfile);
+userRouter.get(routes.changePassword, changePassword);
+
+export default userRouter;

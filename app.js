@@ -7,13 +7,12 @@ import userRouter from "./routers/userRouter";
 import videoRouter from "./routers/videoRouter";
 import globalRouter from "./routers/globalRouter";
 import routes from "./routes";
+const app = express();
 
-//const express = require('express'); //node_modules에서 express 찾아서 import
-const app = express(); //express를 실행한것 (서버를 갖게 한것).
-
+app.set("view engine", "pug");
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 app.use(morgan("dev"));
 
@@ -21,4 +20,4 @@ app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
 
-export default app; //누군가 내 파일을 import할때 app을 object로 주겠다
+export default app;
